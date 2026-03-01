@@ -1,25 +1,30 @@
-import { Image } from "expo-image";
-import { Platform, StyleSheet, View } from "react-native";
+import { Text, View, StyleSheet, TextInput, Button } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { useState } from "react";
 
 export default function HomeScreen() {
-  return <View></View>;
+  const [text, setText] = useState("");
+
+  return (
+    <SafeAreaView>
+      <View style={styles.container}>
+        <Text style={styles.text}>텍스트</Text>
+      </View>
+      <TextInput value={text} onChangeText={(value) => setText(value)} />
+      <Button title="버튼이름" onPress={() => console.log("pressed!")} />
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
+  container: {
+    backgroundColor: "yellow",
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  text: {
+    color: "red",
+    fontSize: 30,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: "absolute",
+  input: {
+    fontSize: 30,
   },
 });
